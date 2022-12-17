@@ -1,6 +1,7 @@
 package com.grsu.cherniavskij.horserace.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.grsu.cherniavskij.horserace.model.enums.ResultEvent;
 
 import javax.persistence.*;
@@ -11,11 +12,11 @@ import java.util.Set;
 @Entity
 public class Event {
     @Id
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String raceName ;
-    @JsonBackReference
-    @OneToMany
+    @JsonManagedReference
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id")
     private List<Horse> horses;
     private Date dateRegister;

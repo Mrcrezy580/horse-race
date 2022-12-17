@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 public class Account {
     @Id
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JsonBackReference
     @ManyToOne

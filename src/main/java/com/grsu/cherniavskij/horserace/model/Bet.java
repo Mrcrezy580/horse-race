@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 public class Bet {
     @Id
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Date dateBet;
